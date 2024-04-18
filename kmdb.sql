@@ -263,6 +263,7 @@ INSERT INTO actors (
 VALUES (
     "Anne Hathaway"
 );
+
 INSERT INTO roles (
     "name",
     "movies_id",
@@ -274,50 +275,7 @@ VALUES (
     "1",
     "1"
 );
-INSERT INTO roles (
-    "name",
-    "movies_id",
-    "actors_id"
-)
 
-VALUES (
-    "Bruce Wayne",
-    "2",
-    "1"
-);
-INSERT INTO roles (
-    "name",
-    "movies_id",
-    "actors_id"
-)
-
-VALUES (
-    "Bruce Wayne",
-    "3",
-    "1"
-);
-INSERT INTO roles (
-    "name",
-    "movies_id",
-    "actors_id"
-)
-
-VALUES (
-    "Commissioner Gordon",
-    "1",
-    "5"
-);
-INSERT INTO roles (
-    "name",
-    "movies_id",
-    "actors_id"
-)
-
-VALUES (
-    "Commissioner Gordon",
-    "3",
-    "5"
-);
 INSERT INTO roles (
     "name",
     "movies_id",
@@ -329,39 +287,7 @@ VALUES (
     "1",
     "2"
 );
-INSERT INTO roles (
-    "name",
-    "movies_id",
-    "actors_id"
-)
 
-VALUES (
-    "Alfred",
-    "2",
-    "2"
-);
-INSERT INTO roles (
-    "name",
-    "movies_id",
-    "actors_id"
-)
-
-VALUES (
-    "Rachel Dawes",
-    "1",
-    "4"
-);
-INSERT INTO roles (
-    "name",
-    "movies_id",
-    "actors_id"
-)
-
-VALUES (
-    "Rachel Dawes",
-    "2",
-    "8"
-);
 INSERT INTO roles (
     "name",
     "movies_id",
@@ -373,6 +299,43 @@ VALUES (
     "1",
     "3"
 );
+
+INSERT INTO roles (
+    "name",
+    "movies_id",
+    "actors_id"
+)
+
+VALUES (
+    "Rachel Dawes",
+    "1",
+    "4"
+);
+
+INSERT INTO roles (
+    "name",
+    "movies_id",
+    "actors_id"
+)
+
+VALUES (
+    "Commissioner Gordon",
+    "1",
+    "5"
+);
+
+INSERT INTO roles (
+    "name",
+    "movies_id",
+    "actors_id"
+)
+
+VALUES (
+    "Bruce Wayne",
+    "2",
+    "1"
+);
+
 INSERT INTO roles (
     "name",
     "movies_id",
@@ -384,6 +347,7 @@ VALUES (
     "2",
     "6"
 );
+
 INSERT INTO roles (
     "name",
     "movies_id",
@@ -394,6 +358,53 @@ VALUES (
     "Harvey Dent",
     "2",
     "7"
+);
+
+INSERT INTO roles (
+    "name",
+    "movies_id",
+    "actors_id"
+)
+
+VALUES (
+    "Alfred",
+    "2",
+    "2"
+);
+
+INSERT INTO roles (
+    "name",
+    "movies_id",
+    "actors_id"
+)
+
+VALUES (
+    "Rachel Dawes",
+    "2",
+    "8"
+);
+
+INSERT INTO roles (
+    "name",
+    "movies_id",
+    "actors_id"
+)
+
+VALUES (
+    "Bruce Wayne",
+    "3",
+    "1"
+);
+INSERT INTO roles (
+    "name",
+    "movies_id",
+    "actors_id"
+)
+
+VALUES (
+    "Commissioner Gordon",
+    "3",
+    "5"
 );
 INSERT INTO roles (
     "name",
@@ -435,6 +446,10 @@ VALUES (
 
 -- The SQL statement for the movies output
 -- TODO!
+SELECT movies.title, movies.year_released, movies.MPAA_rating, studios.name
+FROM movies INNER JOIN studios ON movies.studios_id = studios.id
+ORDER BY movies.year_released
+;
 
 -- Prints a header for the cast output
 .print ""
@@ -445,3 +460,8 @@ VALUES (
 
 -- The SQL statement for the cast output
 -- TODO!
+SELECT movies.title, actors.name, roles.name
+FROM roles INNER JOIN movies ON roles.movies_id = movies.id
+INNER JOIN actors ON roles.actors_id = actors.id
+ORDER BY movies.title
+;
